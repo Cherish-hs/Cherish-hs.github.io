@@ -1,4 +1,4 @@
-# 与截图中相同的官方工作流：Deploy Jekyll with GitHub Pages dependencies preinstalled
+# 官方工作流：Deploy Jekyll with GitHub Pages dependencies preinstalled
 # 推送代码后自动构建并部署到 GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
