@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p class="hero-bio">{{ site.description }}</p>
+</section>
+
+<section class="post-list">
+  {% assign posts = paginator.posts | default: site.posts %}
+  {% for post in posts %}
+  <article class="post-item">
+    <div class="post-item-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+    </div>
+    <h2 class="post-item-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h2>
+    <p class="post-excerpt">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 140 }}</p>
+    {% if post.tags.size > 0 %}
+    <div class="post-tags">
+      {% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </article>
+  {% else %}
+  <p class="empty-tip">还没有文章，去 <code>_posts/</code> 目录写下第一篇吧。</p>
+  {% endfor %}
+</section>
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&larr; 上一页</a>
+  {% else %}
+    <span class="disabled">&larr; 上一页</span>
+  {% endif %}
+  <span class="page-info">第 {{ paginator.page }} / {{ paginator.total_pages }} 页</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">下一页 &rarr;</a>
+  {% else %}
+    <span class="disabled">下一页 &rarr;</span>
+  {% endif %}
+</nav>
+{% endif %}

@@ -1,0 +1,34 @@
+# ---------------- 站点基本信息（按需修改） ----------------
+title: Cherish 的个人博客
+description: 记录机器人学习、Python 编程与技术成长
+url: "https://cherish-hs.github.io"   # 你的 GitHub Pages 地址
+baseurl: ""
+lang: zh-CN
+
+author:
+  name: Cherish
+  github: Cherish-hs
+  email: ""            # 可选，填邮箱后页脚会显示
+
+# ---------------- 构建配置 ----------------
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:year/:month/:day/:title/
+
+# GitHub Pages 支持的插件（白名单内，无需额外配置）
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# 分页：首页每页显示文章数
+paginate: 5
+paginate_path: /page:num/
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# 每页摘要分隔符（文章中插入 <!--more--> 可自定义摘要截断位置）
+excerpt_separator: "<!--more-->"
