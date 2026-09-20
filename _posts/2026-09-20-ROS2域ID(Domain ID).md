@@ -2,7 +2,7 @@
 layout: post
 title: "ROS2 Domain ID"
 date: 2026-09-20 22:00:00 +0800
-tags: [晚上晚上好]
+tags: [ROS2]
 ---
 
 # 同学的海龟，我的键盘：从“串台”现象理解 ROS 2 Domain ID
