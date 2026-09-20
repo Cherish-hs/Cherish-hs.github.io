@@ -1,3 +1,10 @@
+---
+layout: post
+title: "ROS2 Domain ID"
+date: 2026-09-20 22:00:00 +0800
+tags: [晚上晚上好]
+---
+
 # 同学的海龟，我的键盘：从“串台”现象理解 ROS 2 Domain ID
 
 同学在自己电脑上打开了 `turtlesim` 海龟界面，你却在另一台电脑上敲下：
