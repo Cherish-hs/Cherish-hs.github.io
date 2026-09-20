@@ -47,7 +47,7 @@
           io.unobserve(en.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(function (el, i) {
       // 首页列表交错入场
