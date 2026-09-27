@@ -2,9 +2,8 @@
 layout: post
 title: "Ubuntu 双系统 + ROS2开发环境的搭建"
 date: 2026-09-27 
-tags: [晚上晚上好]
+tags: [双系统安装-ROS2]
 ---
-# Ubuntu 双系统 + ROS 2 开发环境搭建
 
 > **来源**：与DeepSeek对话 —— <https://chat.deepseek.com/share/xm5hxre6y2x8385c9u>的整理
 > **原始问题**：Win 装双系统，用于 ROS 2 开发，应该装哪个 Linux
