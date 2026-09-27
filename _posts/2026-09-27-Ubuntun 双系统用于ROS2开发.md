@@ -5,12 +5,6 @@ date: 2026-09-27
 tags: [双系统安装-ROS2]
 ---
 
-> **来源**：与DeepSeek对话 —— <https://chat.deepseek.com/share/xm5hxre6y2x8385c9u>的整理
-> **原始问题**：Win 装双系统，用于 ROS 2 开发，应该装哪个 Linux
-> 关键步骤请以 [ROS 2 官方文档](https://docs.ros.org/) 为准
-
----
-
 ## 目录
 
 - [一、装哪个 Linux？](#一装哪个-linux)
@@ -320,7 +314,9 @@ Ubuntu 和 Windows 对硬件时间的解读方式不同（Windows 视为本地�
 ```bash
 timedatectl set-local-rtc 1
 ```
-
+> **来源**：与DeepSeek对话 —— <https://chat.deepseek.com/share/xm5hxre6y2x8385c9u>的整理
+> **原始问题**：Win 装双系统，用于 ROS 2 开发，应该装哪个 Linux
+> 关键步骤请以 [ROS 2 官方文档](https://docs.ros.org/) 为准
 ---
 
 
