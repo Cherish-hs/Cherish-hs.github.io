@@ -472,6 +472,8 @@ h1, h2, h3, h4 { line-height: 1.4; font-weight: 700; }
 }
 
 .post-content { word-wrap: break-word; }
+.post-content h2,
+.post-content h3 { scroll-margin-top: 84px; }
 .post-content h2 {
   font-size: 1.4rem;
   margin-top: 2.1em;
@@ -522,7 +524,51 @@ h1, h2, h3, h4 { line-height: 1.4; font-weight: 700; }
 .post-content th { background: var(--code-bg); }
 .post-content hr { border: none; border-top: 1px solid var(--border); margin: 2.6em 0; }
 
-/* 上下篇 */
+/* ==================== 侧边文章目录 ==================== */
+.toc {
+  position: fixed;
+  top: 96px;
+  right: 28px;
+  width: 208px;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  display: none;
+  z-index: 40;
+}
+.toc.ready { display: block; }
+.toc-title {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+.toc-nav { display: flex; flex-direction: column; }
+.toc-item {
+  display: block;
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid var(--border);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.toc-item:hover { color: var(--text); text-decoration: none; }
+.toc-item.toc-h3 { padding-left: 26px; font-size: 0.8rem; }
+.toc-item.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--code-bg);
+}
+
+/* ==================== 上下篇 ==================== */
 .post-nav {
   display: flex;
   justify-content: space-between;
@@ -605,6 +651,9 @@ h1, h2, h3, h4 { line-height: 1.4; font-weight: 700; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
 /* ==================== 响应式 ==================== */
+@media (max-width: 1279px) {
+  .toc { display: none !important; }
+}
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .header-inner { height: 56px; }

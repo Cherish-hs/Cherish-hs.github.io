@@ -90,6 +90,62 @@
     tick();
   }
 
+  /* ---------------- 侧边文章目录（TOC） ---------------- */
+  var toc = document.getElementById('toc');
+  var tocNav = toc ? toc.querySelector('.toc-nav') : null;
+  var postBody = document.querySelector('.post-content');
+
+  if (toc && tocNav && postBody) {
+    var heads = postBody.querySelectorAll('h2, h3');
+    var tocLinks = [];
+    var usedIds = {};
+
+    Array.prototype.forEach.call(heads, function (h, idx) {
+      var id = h.id;
+      if (!id) {
+        id = 'sec-' + (idx + 1);
+        while (usedIds[id]) id += '-x';
+        h.id = id;
+      }
+      usedIds[id] = true;
+
+      var a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = (h.textContent || '').trim();
+      a.className = 'toc-item toc-h' + h.tagName.charAt(1);
+      tocNav.appendChild(a);
+      tocLinks.push({ link: a, head: h });
+    });
+
+    if (tocLinks.length < 2) {
+      toc.parentNode.removeChild(toc);
+    } else {
+      toc.classList.add('ready');
+
+      var tocTicking = false;
+      function syncToc() {
+        tocTicking = false;
+        var offset = 96;
+        var active = 0;
+        for (var i = 0; i < tocLinks.length; i++) {
+          if (tocLinks[i].head.getBoundingClientRect().top <= offset) active = i;
+          else break;
+        }
+        // 滚动到底部时高亮最后一项
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 40) {
+          active = tocLinks.length - 1;
+        }
+        tocLinks.forEach(function (item, i) {
+          item.link.classList.toggle('active', i === active);
+        });
+      }
+      window.addEventListener('scroll', function () {
+        if (!tocTicking) { tocTicking = true; requestAnimationFrame(syncToc); }
+      }, { passive: true });
+      syncToc();
+    }
+  }
+
   /* ---------------- 粒子网络背景（Canvas） ---------------- */
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canvas = document.getElementById('bg-canvas');
