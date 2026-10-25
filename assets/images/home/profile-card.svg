@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#071120"/>
+      <stop offset="0.6" stop-color="#0e2036"/>
+      <stop offset="1" stop-color="#16324e"/>
+    </linearGradient>
+    <radialGradient id="pglow" cx="0.5" cy="0.72" r="0.55">
+      <stop offset="0" stop-color="#14b8a6" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c3answer352"/>
+      <stop offset="1" stop-color="#0d1c30"/>
+    </linearGradient>
+    <linearGradient id="pm2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#122440"/>
+      <stop offset="1" stop-color="#081120"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#psky)"/>
+  <g fill="#d7e5f2">
+    <circle cx="60" cy="46" r="1.4" opacity="0.9"/>
+    <circle cx="150" cy="90" r="1" opacity="0.6"/>
+    <circle cx="250" cy="40" r="1.5" opacity="0.85"/>
+    <circle cx="360" cy="110" r="1" opacity="0.5"/>
+    <circle cx="450" cy="60" r="1.4" opacity="0.85"/>
+    <circle cx="540" cy="100" r="1" opacity="0.55"/>
+    <circle cx="200" cy="150" r="1.1" opacity="0.45"/>
+    <circle cx="500" cy="160" r="1.2" opacity="0.5"/>
+  </g>
+  <ellipse cx="300" cy="250" rx="300" ry="110" fill="url(#pglow)"/>
+  <path d="M0 300 L120 190 L210 250 L310 150 L410 240 L500 180 L600 260 L600 360 L0 360 Z" fill="#16283e"/>
+  <g fill="#eaf2fa" opacity="0.9">
+    <path d="M310 150 L336 178 L318 174 L300 186 L286 170 Z"/>
+    <path d="M120 190 L142 214 L126 210 L112 220 L100 208 Z"/>
+  </g>
+  <path d="M0 336 L160 280 L340 330 L480 288 L600 324 L600 360 L0 360 Z" fill="#0a1626"/>
+</svg>
