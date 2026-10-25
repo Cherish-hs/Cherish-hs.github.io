@@ -327,6 +327,7 @@ html:not([data-theme="dark"]) .ch-icon-moon { display: none; }
 
 /* ---------- 精选项目 / 文章网格 ---------- */
 .ch-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ch-project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 20px; }
 
 .ch-cover {
   display: block;
@@ -345,6 +346,12 @@ html:not([data-theme="dark"]) .ch-icon-moon { display: none; }
 .ch-cover-linux   { background: linear-gradient(135deg, #1f2937, #0f172a); }
 .ch-cover-docker  { background: linear-gradient(135deg, #1d4ed8, #1e3a8a); }
 .ch-cover-generic { background: linear-gradient(135deg, #334155, #1e293b); }
+/* 项目卡片可选配色（_data/projects.yml 里的 accent 字段） */
+.ch-cover-teal   { background: linear-gradient(135deg, #0f766e, #134e4a); }
+.ch-cover-blue   { background: linear-gradient(135deg, #155e75, #0c3d54); }
+.ch-cover-indigo { background: linear-gradient(135deg, #1e3a8a, #3730a3); }
+.ch-cover-slate  { background: linear-gradient(135deg, #334155, #1e293b); }
+.ch-cover-dark   { background: linear-gradient(135deg, #1f2937, #0f172a); }
 .ch-cover-emoji {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -575,6 +582,7 @@ html[data-theme="dark"] .ch-algo-num { color: #5eead4; }
 @media (max-width: 760px) {
   .ch-nav-links { display: none; }
   .ch-grid-3 { grid-template-columns: 1fr; }
+  .ch-project-grid { grid-template-columns: 1fr; }
   .ch-sidebar { grid-template-columns: 1fr; }
   .ch-hero-inner { flex-direction: column; align-items: flex-start; padding: 40px 20px 42px; }
   .ch-hero-left { flex-direction: column; }

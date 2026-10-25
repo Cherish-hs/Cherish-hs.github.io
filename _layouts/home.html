@@ -89,34 +89,25 @@
           </div>
           <a class="ch-sec-more" href="https://github.com/{{ site.author.github }}?tab=repositories" target="_blank" rel="noopener noreferrer">查看全部 →</a>
         </div>
-        <div class="ch-grid-3">
+        <div class="ch-project-grid">
+          {% for project in site.data.projects %}
           <article class="ch-card ch-reveal">
-            <div class="ch-cover"><img src="{{ '/assets/images/opencv/图像识别.png' | relative_url }}" alt="基于 OpenCV 的二维码识别" loading="lazy"></div>
+            <a class="ch-cover{% if project.cover %}{% else %} ch-cover-{{ project.accent | default: 'generic' }}{% endif %}" href="{{ project.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ project.title | escape }}">
+              {% if project.cover %}
+                <img src="{{ project.cover | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">
+              {% else %}
+                <div class="ch-cover-grid-lines"></div>
+                <span class="ch-cover-emoji">{{ project.icon | default: '📁' }}</span>
+              {% endif %}
+            </a>
             <div class="ch-card-body">
-              <h3 class="ch-card-title">基于 OpenCV 的二维码与条形码识别系统</h3>
-              <p class="ch-card-desc">使用 OpenCV 和 pyzbar 实现实景二维码与条形码识别，支持摄像头和图片输入。</p>
-              <div class="ch-tags"><span>Python</span><span>OpenCV</span><span>计算机视觉</span></div>
-              <a class="ch-card-link" href="https://github.com/{{ site.author.github }}?tab=repositories" target="_blank" rel="noopener noreferrer">查看项目 →</a>
+              <h3 class="ch-card-title"><a class="ch-card-title-link" href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.title | escape }}</a></h3>
+              {% if project.desc %}<p class="ch-card-desc">{{ project.desc }}</p>{% endif %}
+              {% if project.tags %}<div class="ch-tags">{% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}</div>{% endif %}
+              <a class="ch-card-link" href="{{ project.url }}" target="_blank" rel="noopener noreferrer">查看项目 →</a>
             </div>
           </article>
-          <article class="ch-card ch-reveal">
-            <div class="ch-cover ch-cover-ros"><div class="ch-cover-grid-lines"></div><span class="ch-cover-emoji">🤖</span></div>
-            <div class="ch-card-body">
-              <h3 class="ch-card-title">ROS 2 机器人导航项目</h3>
-              <p class="ch-card-desc">基于 ROS 2 与 TurtleBot3 仿真导航，包含建图、定位和自主导航功能。</p>
-              <div class="ch-tags"><span>ROS 2</span><span>机器人</span><span>导航</span></div>
-              <a class="ch-card-link" href="https://github.com/{{ site.author.github }}?tab=repositories" target="_blank" rel="noopener noreferrer">查看项目 →</a>
-            </div>
-          </article>
-          <article class="ch-card ch-reveal">
-            <div class="ch-cover ch-cover-py"><div class="ch-cover-grid-lines"></div><span class="ch-cover-emoji">🐍</span></div>
-            <div class="ch-card-body">
-              <h3 class="ch-card-title">Python 图像处理与识别</h3>
-              <p class="ch-card-desc">实现图像处理、特征提取、目标检测等功能；基于 OpenCV 进行开发。</p>
-              <div class="ch-tags"><span>Python</span><span>OpenCV</span><span>图像处理</span></div>
-              <a class="ch-card-link" href="https://github.com/{{ site.author.github }}?tab=repositories" target="_blank" rel="noopener noreferrer">查看项目 →</a>
-            </div>
-          </article>
+          {% endfor %}
         </div>
       </section>
 
