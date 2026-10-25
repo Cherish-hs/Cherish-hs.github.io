@@ -10,7 +10,7 @@
       <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="pm" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1c3answer352"/>
+      <stop offset="0" stop-color="#1c3352"/>
       <stop offset="1" stop-color="#0d1c30"/>
     </linearGradient>
     <linearGradient id="pm2" x1="0" y1="0" x2="0" y2="1">
