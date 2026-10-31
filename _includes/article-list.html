@@ -1,0 +1,28 @@
+<div class="ch-article-list">
+  {% for post in include.posts %}
+  {% assign keywords = post.tags | join: ' ' | append: ' ' | append: post.title | downcase %}
+  <article class="ch-article" data-article data-keywords="{{ keywords | escape }}">
+    <a class="ch-article-cover" href="{{ post.url | relative_url }}" aria-label="阅读：{{ post.title | escape }}">
+      {% if post.cover %}
+      <img src="{{ post.cover | relative_url }}" alt="" loading="lazy">
+      {% elsif keywords contains 'opencv' or keywords contains '图像' %}
+      <span class="ch-article-mark ch-mark-blue">OpenCV</span>
+      {% elsif keywords contains 'mqtt' %}
+      <span class="ch-article-mark">MQTT</span>
+      {% elsif keywords contains 'python' %}
+      <span class="ch-article-mark ch-mark-gold">Python</span>
+      {% elsif keywords contains 'ros' %}
+      <span class="ch-article-mark ch-mark-blue">ROS 2</span>
+      {% elsif keywords contains 'docker' %}
+      <span class="ch-article-mark ch-mark-blue">Docker</span>
+      {% else %}<span class="ch-article-mark">Notes</span>{% endif %}
+    </a>
+    <div class="ch-article-body">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+      <p>{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 75 }}</p>
+      <div class="ch-article-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>{% if post.tags.first %}<span>·</span><span>{{ post.tags.first | escape }}</span>{% endif %}</div>
+    </div>
+    <a class="ch-article-arrow" href="{{ post.url | relative_url }}" aria-label="阅读：{{ post.title | escape }}">↗</a>
+  </article>
+  {% endfor %}
+</div>

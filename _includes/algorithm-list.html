@@ -1,0 +1,18 @@
+{% assign solutions = site.posts | where_exp: 'post', "post.categories contains '算法题解'" %}
+{% if solutions.size > 0 %}
+<div class="ch-algo-grid">
+  {% for post in solutions limit: include.limit %}
+  <a class="ch-card ch-algo-card" href="{{ post.url | relative_url }}">
+    <span class="ch-algo-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+    <h3 class="ch-algo-title">{{ post.title | escape }}</h3>
+    <p class="ch-algo-meta">{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 70 }}</p>
+    <div class="ch-algo-foot"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><span>阅读题解 →</span></div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="ch-empty">
+  <span class="ch-empty-icon" aria-hidden="true">&lt;/&gt;</span>
+  <div><h3>题解正在积累中</h3><p>后续会在这里分享解题思路、代码实现与复杂度分析。</p></div>
+</div>
+{% endif %}

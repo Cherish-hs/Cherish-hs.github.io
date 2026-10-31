@@ -5,10 +5,23 @@ url: "https://cherish-hs.github.io"   # 你的 GitHub Pages 地址
 baseurl: ""
 lang: zh-CN
 
+# 每个项目都是一个可以独立访问的图文介绍页。
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
 author:
   name: Cherish
   github: Cherish-hs
-  email: ""            # 可选，填邮箱后页脚会显示
+  email: "703141976@qq.com"            # 可选，填邮箱后页脚会显示
 
 # ---------------- 构建配置 ----------------
 markdown: kramdown

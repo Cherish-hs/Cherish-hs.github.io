@@ -1,0 +1,10 @@
+---
+layout: showcase
+title: 项目作品
+permalink: /projects/
+---
+<main class="ch-directory">
+  <a class="ch-back" href="{{ '/' | relative_url }}">← 返回首页</a>
+  <header class="ch-directory-header"><p class="ch-eyebrow">PROJECTS</p><h1>项目作品</h1><p>从想法到实践，记录每一个项目的构建过程。</p></header>
+  <div class="ch-project-grid">{% assign projects = site.projects | sort: 'order' %}{% for project in projects %}{% include project-card.html %}{% endfor %}</div>
+</main>

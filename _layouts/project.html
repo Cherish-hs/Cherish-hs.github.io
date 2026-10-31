@@ -1,0 +1,18 @@
+---
+layout: showcase
+---
+<main class="ch-reading">
+  <nav class="ch-breadcrumb" aria-label="面包屑"><a href="{{ '/' | relative_url }}">首页</a><span>/</span><a href="{{ '/projects/' | relative_url }}">项目作品</a><span>/</span><span>项目介绍</span></nav>
+  <article class="ch-detail">
+    <header class="ch-detail-header">
+      <p class="ch-eyebrow">{{ page.field | default: 'PROJECT' | escape }}</p>
+      <h1>{{ page.title | escape }}</h1>
+      <p class="ch-detail-summary">{{ page.description | escape }}</p>
+      <div class="ch-tags">{% for tag in page.tags %}<span>{{ tag | escape }}</span>{% endfor %}</div>
+      {% if page.repo_url %}<a class="ch-repo-link" href="{{ page.repo_url | escape }}" target="_blank" rel="noopener noreferrer">查看 GitHub 仓库 ↗</a>{% endif %}
+    </header>
+    <div class="ch-prose">{{ content }}</div>
+    {% if page.repo_url %}<aside class="ch-repo-callout"><h2>源码与项目资料</h2><p>完整代码、运行方法与后续更新，请前往项目仓库查看。</p><a class="ch-repo-link" href="{{ page.repo_url | escape }}" target="_blank" rel="noopener noreferrer">前往项目仓库 ↗</a></aside>{% endif %}
+  </article>
+  <a class="ch-back" href="{{ '/projects/' | relative_url }}">← 返回项目列表</a>
+</main>

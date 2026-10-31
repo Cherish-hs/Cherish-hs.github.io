@@ -1,0 +1,10 @@
+---
+layout: showcase
+title: 文章归档
+permalink: /archives/
+---
+<main class="ch-directory">
+  <a class="ch-back" href="{{ '/' | relative_url }}">← 返回首页</a>
+  <header class="ch-directory-header"><p class="ch-eyebrow">ARCHIVES</p><h1>文章归档</h1><p>记录学习过程，沉淀项目经验。共 {{ site.posts.size }} 篇文章。</p></header>
+  {% include article-list.html posts=site.posts %}
+</main>
