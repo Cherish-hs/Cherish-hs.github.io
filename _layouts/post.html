@@ -26,6 +26,8 @@ layout: default
     </div>
   </div>
 
+  {% if content contains 'language-mermaid' %}{% include mermaid.html %}{% endif %}
+
   <nav class="post-nav reveal">
     {% if page.previous.url %}
       <a class="post-nav-prev" href="{{ page.previous.url | relative_url }}">

@@ -1,0 +1,78 @@
+<style>
+  .mermaid {
+    margin: 1.6em 0;
+    padding: 1rem;
+    overflow-x: auto;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(var(--bg-rgb), 0.35);
+  }
+  .mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+  // kramdown 把 ```mermaid 输出成 <pre><code class="language-mermaid">，需要先换成元素节点
+  const containers = [];
+  document.querySelectorAll("pre > code.language-mermaid").forEach((code) => {
+    const div = document.createElement("div");
+    div.className = "mermaid";
+    div.textContent = code.textContent;
+    code.parentElement.replaceWith(div);
+    containers.push(div);
+  });
+
+  if (containers.length) {
+    const sources = new Map(containers.map((el) => [el, el.textContent]));
+    let rendering = false;
+    let dead = false;
+
+    const render = async () => {
+      if (rendering || dead) return;
+      rendering = true;
+      const theme =
+        document.documentElement.getAttribute("data-theme") === "light" ? "default" : "dark";
+      try {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme,
+          securityLevel: "loose",
+          fontFamily: "inherit",
+        });
+        for (const [el, src] of sources) {
+          el.removeAttribute("data-processed");
+          el.textContent = src;
+        }
+        await mermaid.run({ nodes: [...sources.keys()] });
+      } catch (err) {
+        // 渲染失败时退回原始代码块，至少不丢内容
+        dead = true;
+        observer.disconnect();
+        for (const [el, src] of sources) {
+          const pre = document.createElement("pre");
+          const code = document.createElement("code");
+          code.className = "language-mermaid";
+          code.textContent = src;
+          pre.append(code);
+          el.replaceWith(pre);
+        }
+        console.error("[mermaid] 渲染失败，已回退为代码块：", err);
+      } finally {
+        rendering = false;
+      }
+    };
+
+    const observer = new MutationObserver(render);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    render();
+  }
+</script>
